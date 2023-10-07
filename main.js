@@ -10,12 +10,12 @@ for (bucle = 1; bucle <= numAlumnos; bucle++){
     let nota2 = parseInt(prompt("ingresa tu segunda nota"));
     let nota3 = parseInt(prompt("ingresa tu tercer nota"));
     //calcula el promedio
-    let resultado = (nota1 + nota2 + nota3) / 3;
+    let resultado = parseInt((nota1 + nota2 + nota3) / 3);
     
     //muestra el resultado verdadero
     if (resultado >= 7){
-        alert(`${alumno}: ${resultado} aprobado`);
+        alert(`${alumno}: tu promedio es ${resultado} aprobado`);
     } else {
-        alert(`${alumno}: ${resultado} desaprobado`);
+        alert(`${alumno}: tu promedio es ${resultado} desaprobado`);
     }
  }
