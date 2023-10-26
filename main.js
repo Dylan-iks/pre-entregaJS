@@ -63,7 +63,7 @@ let objeto = "";
 //bucle con la condicion esc para que pare
 while (objeto != "esc"){
     //usuario ingresa valor a la variable objeto
-    objeto = prompt(`1- Ver lista de productos \n 2- Vender objeto \n 3- Comprar producto \n 4- Buscar Producto \n 5- Filtrar productos por su nombre`);
+    objeto = prompt(`1- Ver lista de productos \n 2- Vender objeto \n 3- Comprar producto \n 4- Buscar Producto \n 5- Filtrar productos por su precio`);
     switch (objeto){
         
         case "1": 
@@ -132,18 +132,28 @@ while (objeto != "esc"){
             let productoElegido = prompt("ingrese producto que quiere comprar");
             //se guarda el objeto en una variable 
             let compraFinal =  productos.find((producto) => producto.Nombre === productoElegido)
-            //el metodo JSON.stringify no me gusta como queda, pero fue la unica forma que encontre para que se vea el objeto mediante un alert()
-            alert(JSON.stringify(compraFinal))
+            
+            if (compraFinal) {
+                alert("Producto encontrado:\nNombre: " + compraFinal.Nombre + "\nPrecio: " + compraFinal.Precio + "\nColor: " + compraFinal.Color);
+              } else {
+                alert("Producto no encontrado");
+              }
         
             break;
 
         case "5":
-            //usuario escribe un producto
-            let productoFiltrado = prompt("ingrese nombre de producto");
-            //se filtran los productos y se guardan en una constante
-            const productoFiltradoFinal = productos.filter((producto) => producto.Nombre.includes(productoFiltrado) )
-            //el metodo JSON.stringify no me gusta como queda, pero fue la unica forma que encontre para que se vea el objeto mediante un alert()
-            alert(JSON.stringify(productoFiltradoFinal))
+            let precioMaximo = parseFloat(prompt("Ingrese el precio máximo"));
+            let productosFiltrados = productos.filter((producto) => producto.Precio <= precioMaximo);
+
+            if (productosFiltrados.length > 0) {
+                let mensaje = "Productos encontrados:\n";
+                productosFiltrados.forEach((producto) => {
+                    mensaje += "Nombre: " + producto.Nombre + ", Precio: " + producto.Precio + "\n";
+                    });
+                    alert(mensaje);
+                    } else {
+                        alert("No se encontraron productos que cumplan con el filtro.");
+                    }
             
             break;
 
