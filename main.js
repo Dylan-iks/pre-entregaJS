@@ -117,7 +117,9 @@ while (objeto != "esc"){
 
                 comprar(dinero, 15000)
             
-            } else {
+            } 
+            
+            if ((compra != "sillon") && (compra != "cama") && (compra != "ropero") && (compra != "silla de madera") && (compra != "silla de plastico") ) {
                 // este else lo hice por que el objeto.precio no encontraba los precios 
                 alert("No hay stock de ese producto");
             
